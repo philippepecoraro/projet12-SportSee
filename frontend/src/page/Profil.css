@@ -1,0 +1,13 @@
+.profil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;      
+    width: 100%;
+    margin: auto;
+    border: 2px solid green;
+}
+
+.profilBody {
+    display: flex;
+    flex-direction: row;   
+}

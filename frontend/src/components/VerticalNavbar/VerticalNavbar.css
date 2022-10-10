@@ -1,0 +1,34 @@
+.verticalNavbar {    
+    height: 934px;
+    width: 117px;
+    background-color: #020203;
+    display: flex;
+    flex-direction: column;   
+    align-items: center;    
+    margin: 0;
+}
+
+.verticalNavbarIcons {
+    margin-top: 260px;
+}
+
+.verticalNavbarIcon1, .verticalNavbarIcon2,
+.verticalNavbarIcon3, .verticalNavbarIcon4 {
+    height: 64px;
+    width: 64px;   
+}
+
+.verticalNavbarText {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 12px;
+    width: 140px;
+    margin-top: 180px;   
+    color: #FFFFFF;
+    transform: rotate(-90deg);
+    text-align: center;
+}
+
+svg#icon2, svg#icon3, svg#icon4 {
+    margin-top: 20px;
+}

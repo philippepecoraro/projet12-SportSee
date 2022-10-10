@@ -1,0 +1,44 @@
+.horizontalNavbar {
+    height: 90px;
+    background-color: #020203;
+    display: flex;
+    flex-direction: row;   
+    align-items: center;   
+    width: 100%;
+    margin: auto;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.logoText {
+     margin-left: 3%;    
+}
+
+.navbar {    
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 24px;   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center;  
+    width: 80%;
+}
+
+.navbarText1, .navbarText2, .navbarText3,
+.navbarText4 {
+    text-decoration: none;
+    color: #FFFFFF;  
+    width: 20%;
+}
+
+.navbarText1 {   
+    margin-left: 10%; 
+}
+
+
