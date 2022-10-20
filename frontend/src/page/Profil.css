@@ -7,7 +7,92 @@
     border: 2px solid green;
 }
 
-.profilBody {
+.profilNavbarBody {
     display: flex;
     flex-direction: row;   
+    width: 100%;
+}
+
+.profilBody {
+    width: 100%;
+}
+
+.profilHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin-left: 100px;
+    border: 2px solid black;
+}
+
+.profilHeaderTextH1 {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 48px;   
+    margin-bottom: 20px;   
+}
+
+.profilHeaderTextH1 span {
+    color: #FF0101;
+}
+
+.profilHeaderTextP {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 18px;   
+    margin-top: 2px;
+}
+
+.profilActivityData {   
+    display: flex;
+    flex-direction: row; 
+    margin-left: 100px;
+    margin-top: 77px;
+}
+
+.profilActivity {
+    display: flex;
+    flex-direction: column;    
+    width: 70%;  
+    border: 1px solid green;
+}
+
+.profilActivityActivity {
+    height: 320px;
+    border: 1px solid black;
+    background-color: #FBFBFB;    
+}
+
+.profilKeyData {
+    display: flex;
+    flex-direction: column;
+    width: 21%;
+    border: 1px solid red;
+    margin-left: 30px;
+}
+
+.profilActivitySession { 
+    border: 1px solid black;   
+    width: 30%;
+    height: 100%;
+}
+
+.profilActivityPerformance {
+    width: 30%;
+    border: 1px solid black;  
+    height: 100%;     
+}
+
+.profilActivitySessionPerformanceScore {   
+    height: 260px;
+    border: 2px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.profilActivityScore {
+    width: 30%;  
+    border: 1px solid black;  
 }
