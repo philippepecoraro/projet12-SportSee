@@ -6,6 +6,7 @@ import { Service } from '../service/Service'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import KeyData from '../components/KeyData/KeyData'
+import Activity from '../components/Activity/Activity'
 
 
 const Profil = () => {
@@ -14,7 +15,7 @@ const Profil = () => {
     const [userDataSessions, setDataSessions] = useState([]);
     const [userDataPerformance, setDataPerformance] = useState([]);
     const { id } = useParams();
-    let serviceData = true;
+    let serviceData = false;
 
     useEffect(() => {
         if (serviceData) {
@@ -74,6 +75,8 @@ const Profil = () => {
                             <div className='profilActivityData'>
                                 <div className='profilActivity'>
                                     <div className='profilActivityActivity'>
+                                        <div className='profilActivityActivityText'>Activité quotidienne</div>
+                                        <Activity activity={userDataActivity} />
                                     </div>
                                     <div className='profilActivitySessionPerformanceScore'>
                                         <div className='profilActivitySession'>

@@ -1,0 +1,12 @@
+.recharts-legend-item-text {
+    /* color: '#74798C'; */
+    color: rgb(116, 121, 140)!important;
+}
+
+.legend-item-1 {
+    margin-left: 25px;
+}
+
+.recharts-surface {
+    margin-right: 10px!important; 
+}
