@@ -7,10 +7,10 @@ import { ReactComponent as Lipides } from '../../assets/lipides.svg'
 
 
 const KeyData = ({ keyDataIcon, userKeyData }) => {
-    const userKeyDataCalorieCount = userKeyData.keyData.calorieCount;
-    const userKeyDataProteinCount = userKeyData.keyData.proteinCount;
-    const userKeyDataGlucideCount = userKeyData.keyData.carbohydrateCount;
-    const userKeyDataLipideCount = userKeyData.keyData.lipidCount;
+    const userKeyDataCalorieCount = userKeyData.calorieCount;
+    const userKeyDataProteinCount = userKeyData.proteinCount;
+    const userKeyDataGlucideCount = userKeyData.carbohydrateCount;
+    const userKeyDataLipideCount = userKeyData.lipidCount;
 
     return (
         <div className='keyData'>

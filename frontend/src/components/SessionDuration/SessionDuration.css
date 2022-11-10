@@ -1,0 +1,66 @@
+.averageSessions {
+    /* height: 260px; */
+}
+
+.recharts-xAxis{
+    /* width: 380px!important; */
+}
+
+#colorSessionLength {
+     /* transform: translateX(5rem); */
+}
+
+.activeDot {    
+      /* stroke: blue;       
+       /* opacity: 0.2;  */
+      /* border: 4px solid green; */
+      /* color: blueviolet; */
+      /* fill: white;  */
+}
+
+.recharts-cartesian-axis-ticks {
+    /* width: 380px!important;
+    margin-right: 30px!important;     */
+    /* margin: 0; */
+}
+
+.recharts-layer {
+    /* margin-right: 100px!important;
+    transform-origin: 20px 20px; */
+    /* margin: 0; */
+    /* margin-left: 30px; */
+    /* left: 50px; */
+}
+
+.recharts-line-curve {
+    /* margin-left: 150px; */
+    /* left: 150px; */
+    /* padding-left: 50px; */
+    /* border: 1px solid black; */
+      /* transform: translateX(1rem);  */
+}
+
+.xAxis {
+    /* transform: translateX(3rem); */
+}
+
+.recharts-line {
+ /* transform: translateX(1rem);  */
+ /* width: 300px; */
+}
+
+.recharts-tooltip-wrapper {
+     /* transform: translateX(3rem);  */
+}
+
+.recharts-tooltip-cursor {
+    /* transform: translateX(3rem);  */
+}
+
+.yAxis {
+    /* transform: translateX(4rem);  */
+}
+
+.recharts-tooltip-activeDot {
+    /* transform: translateX(3rem); */
+}

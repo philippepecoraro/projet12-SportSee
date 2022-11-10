@@ -3,18 +3,35 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Legend
 import './Activity.css'
 
 function Activity({ activity }) {
-    const activitySessions = activity.sessions;
-    let tab = [];
+    const activitySessions = activity._sessions;
+    let sessionTab = [];
+    let dayTab = [];
+
 
     if (activitySessions) {
         activitySessions.map(session => {
-            return tab.push(session);
+            session.day = new Date(session.day);
+            const sessionDay = (session.day).getDate();
+            return dayTab.push(sessionDay);
         })
     }
 
-    const formatXAxis = (i) => i + 1;
+    if (activitySessions) {
+        activitySessions.map(session => {
+            return sessionTab.push(session);
+        })
+    }
 
-    const CustomTooltip = ({ active, payload, label }) => {
+    sessionTab.sort((a, b) => {
+        return a.day - b.day;
+    });
+
+    const formatXAxis = (i) => {
+        dayTab.sort((a, b) => a - b);
+        return dayTab[i];
+    }
+
+    const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
                 <div className="custom-tooltip">
@@ -44,33 +61,49 @@ function Activity({ activity }) {
     return (
         <>
             <ResponsiveContainer width="100%" height={320} >
-                <BarChart data={tab} barGap={8}
+                <BarChart data={sessionTab} barGap={8}
                     margin={{ top: 65, right: 30, bottom: 20, left: 0 }}
                 >
                     <CartesianGrid strokeDasharray='3' vertical={false} />
 
                     <XAxis tickLine={false} domain={['dataMin', 'dataMax']}
-                        tickFormatter={formatXAxis} tickMargin={15}
-                        tick={{ fill: '#9B9EAC', fontFamily: 'Roboto', fontSize: 14 }}
+                        tickFormatter={formatXAxis}
+                        tickMargin={15}
+                        tick={{
+                            fill: '#9B9EAC', fontFamily: 'Roboto',
+                            fontSize: 14
+                        }}
                         padding={{ left: -45, right: -45 }}
                     />
 
-                    <YAxis yAxisId='left' orientation='right' dataKey='kilogram'
-                        domain={['dataMin -1', 'dataMax +2']} tickMargin={40} tickCount={3}
-                        tick={{ fill: '#9B9EAC', fontFamily: 'Roboto', fontSize: 14 }}
+                    <YAxis yAxisId='left' orientation='right'
+                        dataKey='kilogram'
+                        domain={['dataMin -1', 'dataMax +2']}
+                        tickMargin={40}
+                        tickCount={3}
+                        tick={{
+                            fill: '#9B9EAC', fontFamily: 'Roboto',
+                            fontSize: 14
+                        }}
                         axisLine={false} tickLine={false}
                     />
 
-                    <YAxis yAxisId='right' orientation='left' dataKey='calories'
+                    <YAxis yAxisId='right' orientation='left'
+                        dataKey='calories'
                         domain={[0, 'dataMax + 50']}
-                        axisLine={false} tickLine={false} tickCount={6}
+                        axisLine={false} tickLine={false}
+                        tickCount={6}
                         tick={false}
                     />
                     <Tooltip
-                        content={<CustomTooltip />} wrapperStyle={{ top: -50, left: 35 }}
+                        content={<CustomTooltip />} wrapperStyle={{
+                            top: -50, left: 35,
+                            outline: 'none'
+                        }}
                     />
 
-                    <Bar yAxisId='left' dataKey='kilogram' fill='#282D30'
+                    <Bar yAxisId='left' dataKey='kilogram'
+                        fill='#282D30'
                         barSize={10}
                         radius={[5, 5, 0, 0]} name='Poids (kg)' />
 
@@ -82,7 +115,8 @@ function Activity({ activity }) {
                     <Legend
                         verticalAlign='top' wrapperStyle={{
                             right: 16, top: 20,
-                            fontFamily: 'Roboto', fontWeight: 500, fontSize: 14,
+                            fontFamily: 'Roboto', fontWeight: 500,
+                            fontSize: 14,
                             width: 300
                         }}
                         align='right' iconSize={8} iconType='circle'

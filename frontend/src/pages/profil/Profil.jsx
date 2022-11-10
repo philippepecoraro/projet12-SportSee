@@ -1,12 +1,19 @@
 import React from 'react'
 import './Profil.css'
-import VerticalNavbar from '../components/VerticalNavbar/VerticalNavbar'
-import { MockedDataService } from '../service/MockedDataService'
-import { Service } from '../service/Service'
+import VerticalNavbar from '../../components/VerticalNavbar/VerticalNavbar'
+import { MockedDataService } from '../../service/MockedDataService'
+import { Service } from '../../service/Service'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import KeyData from '../components/KeyData/KeyData'
-import Activity from '../components/Activity/Activity'
+import KeyData from '../../components/KeyData/KeyData'
+import Activity from '../../components/Activity/Activity'
+import SessionDuration from '../../components/SessionDuration/SessionDuration'
+import Performance from '../../components/Performance/Performance'
+import Completion from '../../components/Completion/Completion'
+import UserData from '../../models/UserData'
+import ActivityData from '../../models/ActivityData'
+import SessionsData from '../../models/SessionsData'
+import PerformanceData from '../../models/PerformanceData'
 
 
 const Profil = () => {
@@ -15,51 +22,71 @@ const Profil = () => {
     const [userDataSessions, setDataSessions] = useState([]);
     const [userDataPerformance, setDataPerformance] = useState([]);
     const { id } = useParams();
-    let serviceData = false;
+    const typeOfData = localStorage.getItem('data1');
+    const typeOfDataBool = JSON.parse(typeOfData);
+
 
     useEffect(() => {
-        if (serviceData) {
-            Service().getUser(id).then(user => setData(user));
-            Service().getUserActivity(id).then(activity => setDataActivity(activity));
-            Service().getUserAverageSessions(id).then(session => setDataSessions(session));
-            Service().getUserPerformance(id).then(performance => setDataPerformance(performance));
+        if (!typeOfDataBool) {
+            Service().getUser(id).then(user => {
+                const userDataData = new UserData(user);
+                setData(userDataData);
+            })
+
+            Service().getUserActivity(id).then(activity => {
+                const userDataDataActivity = new ActivityData(activity);
+                setDataActivity(userDataDataActivity);
+            })
+
+            Service().getUserAverageSessions(id).then(session => {
+                const userDataDataSessions = new SessionsData(session);
+                setDataSessions(userDataDataSessions);
+            })
+
+            Service().getUserPerformance(id).then(performance => {
+                const userDataDataPerformance = new PerformanceData(performance);
+                setDataPerformance(userDataDataPerformance);
+            })
         }
         else {
-            MockedDataService().getUser(id).then(user => {
-                user.forEach((item) => {
+            (MockedDataService().getUser(id))
+                .forEach(item => {
                     if (item.id.toString() === id) {
-                        setData(item);
+                        let userDataData = new UserData(item)
+                        setData(userDataData)
                     }
-                })
-            });
-            MockedDataService().getUserActivity(id).then(activity => {
-                activity.forEach((item) => {
+                });
+
+            (MockedDataService().getUserActivity(id))
+                .forEach(item => {
                     if (item.userId.toString() === id) {
-                        setDataActivity(item);
+                        let userDataDataActivity = new ActivityData(item)
+                        setDataActivity(userDataDataActivity);
                     }
-                })
-            });
-            MockedDataService().getUserAverageSessions(id).then(session => {
-                session.forEach((item) => {
+                });
+
+            (MockedDataService().getUserAverageSessions(id))
+                .forEach(item => {
                     if (item.userId.toString() === id) {
-                        setDataSessions(item);
+                        const userDataDataSessions = new SessionsData(item)
+                        setDataSessions(userDataDataSessions);
                     }
-                })
-            });
-            MockedDataService().getUserPerformance(id).then(performance => {
-                performance.forEach((item) => {
+                });
+
+            (MockedDataService().getUserPerformance(id))
+                .forEach(item => {
                     if (item.userId.toString() === id) {
-                        setDataPerformance(item);
+                        const userDataDataPerformance = new PerformanceData(item)
+                        setDataPerformance(userDataDataPerformance);
                     }
-                })
-            });
+                });
         }
-    }, [id, serviceData]);
+    }, [id, typeOfDataBool]);
 
 
     return (
         <div className='profil'>
-            {userData !== undefined && userData.userInfos !== undefined &&
+            {userData !== undefined &&
                 <>
                     <div className='profilNavbarBody'>
                         <div className='profilVerticalNavbar'>
@@ -68,7 +95,7 @@ const Profil = () => {
                         <div className='profilBody'>
                             <div className='profilHeader'>
                                 <h1 className='profilHeaderTextH1'>Bonjour
-                                    <span> {userData.userInfos.firstName}</span></h1>
+                                    <span> {userData.firstName}</span></h1>
                                 <p className='profilHeaderTextP'>Félicitation ! Vous avez explosé vos objectifs hier
                                     <span> &#128079;</span></p>
                             </div>
@@ -80,10 +107,13 @@ const Profil = () => {
                                     </div>
                                     <div className='profilActivitySessionPerformanceScore'>
                                         <div className='profilActivitySession'>
+                                            <SessionDuration average={userDataSessions} />
                                         </div>
                                         <div className='profilActivityPerformance'>
+                                            <Performance performance={userDataPerformance} />
                                         </div>
                                         <div className='profilActivityScore'>
+                                            <Completion userScore={userData} />
                                         </div>
                                     </div>
                                 </div>

@@ -8,8 +8,6 @@ export const Service = () => {
                     (response.status)
             } else {
                 const allData = await response.json();
-                console.log('allData:', allData)
-                console.log('allData.data:', allData.data)
                 return allData.data;
             }
         } catch (error) {
