@@ -17,10 +17,10 @@ import PerformanceData from '../../models/PerformanceData'
 
 
 const Profil = () => {
-    const [userData, setData] = useState([]);
-    const [userDataActivity, setDataActivity] = useState([]);
-    const [userDataSessions, setDataSessions] = useState([]);
-    const [userDataPerformance, setDataPerformance] = useState([]);
+    const [userData, setData] = useState({});
+    const [userDataActivity, setDataActivity] = useState({});
+    const [userDataSessions, setDataSessions] = useState({});
+    const [userDataPerformance, setDataPerformance] = useState({});
     const { id } = useParams();
     const typeOfData = localStorage.getItem('data1');
     const typeOfDataBool = JSON.parse(typeOfData);

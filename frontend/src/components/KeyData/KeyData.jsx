@@ -4,6 +4,7 @@ import { ReactComponent as Calories } from '../../assets/calories.svg'
 import { ReactComponent as Proteines } from '../../assets/proteines.svg'
 import { ReactComponent as Glucides } from '../../assets/glucides.svg'
 import { ReactComponent as Lipides } from '../../assets/lipides.svg'
+import PropTypes from 'prop-types'
 
 
 const KeyData = ({ keyDataIcon, userKeyData }) => {
@@ -40,5 +41,10 @@ const KeyData = ({ keyDataIcon, userKeyData }) => {
         </div>
     )
 }
+
+KeyData.propTypes = {
+    keyDataIcon: PropTypes.string,
+    userKeyData: PropTypes.object
+};
 
 export default KeyData

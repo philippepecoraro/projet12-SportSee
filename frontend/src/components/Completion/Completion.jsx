@@ -1,6 +1,6 @@
 import React from 'react'
 import { RadialBarChart, RadialBar, PolarAngleAxis, Legend, ResponsiveContainer } from 'recharts'
-import './Completion.css'
+import PropTypes from 'prop-types'
 
 
 function Completion({ userScore }) {
@@ -89,6 +89,10 @@ function Completion({ userScore }) {
             </ResponsiveContainer>
         </>
     )
+}
+
+Completion.propTypes = {
+    userScore: PropTypes.object
 }
 
 export default Completion

@@ -1,10 +1,9 @@
 import React from 'react'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts'
-import './Performance.css'
+import PropTypes from 'prop-types'
 
 
 function Performance({ performance }) {
-
     const performanceKind = performance._kind;
     const performanceData = performance._data;
 
@@ -56,7 +55,6 @@ function Performance({ performance }) {
                 />
 
                 <PolarRadiusAxis
-
                     tickCount={5}
                     tick={false}
                     axisLine={false}
@@ -70,5 +68,9 @@ function Performance({ performance }) {
         </ResponsiveContainer>
     );
 }
+
+Performance.propTypes = {
+    performance: PropTypes.object
+};
 
 export default Performance

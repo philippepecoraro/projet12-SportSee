@@ -1,6 +1,7 @@
 import React from 'react'
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from 'recharts'
-import './SessionDuration.css'
+import PropTypes from 'prop-types'
+
 
 function SessionDuration({ average }) {
     const averageSessions = average._sessions;
@@ -25,6 +26,11 @@ function SessionDuration({ average }) {
                 </div>
             );
         }
+        CustomTooltip.propTypes = {
+            active: PropTypes.bool,
+            payload: PropTypes.array
+        }
+
         return null;
     };
 
@@ -120,5 +126,9 @@ function SessionDuration({ average }) {
         </div>
     )
 }
+
+SessionDuration.propTypes = {
+    average: PropTypes.object
+};
 
 export default SessionDuration

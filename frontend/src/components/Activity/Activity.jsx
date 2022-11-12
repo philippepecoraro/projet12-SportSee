@@ -1,6 +1,8 @@
 import React from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Legend, Tooltip } from 'recharts'
 import './Activity.css'
+import PropTypes from 'prop-types'
+
 
 function Activity({ activity }) {
     const activitySessions = activity._sessions;
@@ -55,6 +57,11 @@ function Activity({ activity }) {
                 </div>
             );
         }
+        CustomTooltip.propTypes = {
+            active: PropTypes.bool,
+            payload: PropTypes.array
+        }
+
         return null;
     };
 
@@ -126,5 +133,9 @@ function Activity({ activity }) {
         </>
     )
 }
+
+Activity.propTypes = {
+    activity: PropTypes.object
+};
 
 export default Activity
