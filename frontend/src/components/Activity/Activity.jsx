@@ -9,11 +9,10 @@ function Activity({ activity }) {
     let sessionTab = [];
     let dayTab = [];
 
-
     if (activitySessions) {
-        activitySessions.map(session => {
-            session.day = new Date(session.day);
-            const sessionDay = (session.day).getDate();
+        activitySessions.map(day => {
+            day._day = new Date(day._day);
+            const sessionDay = (day._day).getDate();
             return dayTab.push(sessionDay);
         })
     }
@@ -25,7 +24,7 @@ function Activity({ activity }) {
     }
 
     sessionTab.sort((a, b) => {
-        return a.day - b.day;
+        return a._day - b._day;
     });
 
     const formatXAxis = (i) => {
@@ -46,7 +45,7 @@ function Activity({ activity }) {
                                 textAlign: 'center'
                             }}>
                                 <div style={{ color: '#FFFFFF', marginTop: 8 }}>
-                                    {((pld.dataKey) === 'kilogram') ?
+                                    {((pld.dataKey) === '_kilogram') ?
                                         <div> {pld.value}kg</div> :
                                         <div>{pld.value}Kcal</div>
                                     }
@@ -84,7 +83,7 @@ function Activity({ activity }) {
                     />
 
                     <YAxis yAxisId='left' orientation='right'
-                        dataKey='kilogram'
+                        dataKey='_kilogram'
                         domain={['dataMin -1', 'dataMax +2']}
                         tickMargin={40}
                         tickCount={3}
@@ -96,7 +95,7 @@ function Activity({ activity }) {
                     />
 
                     <YAxis yAxisId='right' orientation='left'
-                        dataKey='calories'
+                        dataKey='_calories'
                         domain={[0, 'dataMax + 50']}
                         axisLine={false} tickLine={false}
                         tickCount={6}
@@ -109,12 +108,12 @@ function Activity({ activity }) {
                         }}
                     />
 
-                    <Bar yAxisId='left' dataKey='kilogram'
+                    <Bar yAxisId='left' dataKey='_kilogram'
                         fill='#282D30'
                         barSize={10}
                         radius={[5, 5, 0, 0]} name='Poids (kg)' />
 
-                    <Bar yAxisId='right' dataKey='calories' fill='#E60000'
+                    <Bar yAxisId='right' dataKey='_calories' fill='#E60000'
                         barSize={10}
                         name='Calories brûlées (kCal)'
                         radius={[5, 5, 0, 0]} />

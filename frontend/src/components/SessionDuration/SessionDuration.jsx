@@ -83,7 +83,7 @@ function SessionDuration({ average }) {
                     domain={['dataMin + 1', 'dataMax']}
                     interval={0}
                     tickMargin={20}
-                    dataKey='day'
+                    dataKey='_day'
                     tick={{
                         fill: '#FFFFFF', fontFamily: 'Roboto'
                         , fontSize: 14, opacity: 0.5
@@ -106,7 +106,7 @@ function SessionDuration({ average }) {
                     content={<CustomTooltip />}
                     wrapperStyle={{ outline: 'none', visibility: 'visible' }}
                 />
-                <Line dataKey='sessionLength'
+                <Line dataKey='_sessionLength'
                     dot={false}
                     activeDot={{
                         fill: '#FFFFFF', className: 'activeDot',

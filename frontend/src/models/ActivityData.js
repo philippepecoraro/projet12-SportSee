@@ -1,14 +1,33 @@
+import ActivitySessions from "./ActivitySessions";
+
 /**
- * Class ActivityData
+ * Class ActivityData data modeling.
  */
 
 export default class ActivityData {
+    /**
+     * 
+     * @param {object} data - The data value.
+     */
     constructor(data) {
-        const { userId, sessions } = data;
-        console.log('sessions:', sessions)
-        console.log('data:', sessions.day)
-        console.log(data.userId)
-        this._userId = userId;
-        this._sessions = sessions;
+        this._userId = data.userId;
+        this._sessions = data.sessions.map((item) =>
+            new ActivitySessions(item));
+    }
+
+    /**
+     * Get the userId value.
+     * @return {number} The _userId value.
+     */
+    get userId() {
+        return this._userId;
+    }
+
+    /**
+     * Get the sessions value.
+     * @return {array} The _sessions value.
+     */
+    get sessions() {
+        return this._sessions;
     }
 }

@@ -10,20 +10,19 @@ function Performance({ performance }) {
     if (performanceData) {
         performanceData.forEach(item => {
             if (performanceKind) {
-                if (item.kind === 1) {
-                    item.kind = 'Cardio';
-                } else if (item.kind === 2) {
-                    item.kind = 'Energie';
-                } else if (item.kind === 3) {
-                    item.kind = 'Endurance';
-                } else if (item.kind === 4) {
-                    item.kind = 'Force';
-                } else if (item.kind === 5) {
-                    item.kind = 'Vitesse';
-                } else if (item.kind === 6) {
-                    item.kind = 'Intensité';
+                if (item._kind === 1) {
+                    item._kind = 'Cardio';
+                } else if (item._kind === 2) {
+                    item._kind = 'Energie';
+                } else if (item._kind === 3) {
+                    item._kind = 'Endurance';
+                } else if (item._kind === 4) {
+                    item._kind = 'Force';
+                } else if (item._kind === 5) {
+                    item._kind = 'Vitesse';
+                } else if (item._kind === 6) {
+                    item._kind = 'Intensité';
                 }
-                // }
             }
         })
     }
@@ -44,7 +43,7 @@ function Performance({ performance }) {
                     polarRadius={[10, 20, 40, 58, 75]}
                 />
 
-                <PolarAngleAxis dataKey="kind"
+                <PolarAngleAxis dataKey="_kind"
                     tick={{
                         fontFamily: 'Roboto', fontSize: 12,
                         fill: '#FFFFFF'
@@ -61,7 +60,7 @@ function Performance({ performance }) {
                     tickLine={false}
                 />
 
-                <Radar dataKey="value" fill="#FF0101"
+                <Radar dataKey="_value" fill="#FF0101"
                     fillOpacity={0.7}
                 />
             </RadarChart>

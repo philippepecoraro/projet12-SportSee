@@ -52,7 +52,7 @@ const Profil = () => {
             (MockedDataService().getUser(id))
                 .forEach(item => {
                     if (item.id.toString() === id) {
-                        let userDataData = new UserData(item)
+                        const userDataData = new UserData(item)
                         setData(userDataData)
                     }
                 });
@@ -60,7 +60,7 @@ const Profil = () => {
             (MockedDataService().getUserActivity(id))
                 .forEach(item => {
                     if (item.userId.toString() === id) {
-                        let userDataDataActivity = new ActivityData(item)
+                        const userDataDataActivity = new ActivityData(item)
                         setDataActivity(userDataDataActivity);
                     }
                 });
