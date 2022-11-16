@@ -6,7 +6,21 @@ import { ReactComponent as Glucides } from '../../assets/glucides.svg'
 import { ReactComponent as Lipides } from '../../assets/lipides.svg'
 import PropTypes from 'prop-types'
 
-
+/**
+ * Function KeyData - List of KeyData.
+ * @param {string} keyDataIcon - The keyDataIcon value.
+ * @param {object} userKeyData - The userKeyData value. 
+ * @param {number} userKeyData._id - The id value.
+ * @param {number} userKeyData._age - The age value.
+ * @param {number} userKeyData._calorieCount - The calorieCount value.
+ * @param {number} userKeyData._carbohydrateCount - The carbohydrateCount value.
+ * @param {number} userKeyData._proteinCount - The proteinCount value.
+ * @param {number} userKeyData._lipidCount - The lipidCount value.
+ * @param {string} userKeyData._firstName - The firstName value.
+ * @param {string} userKeyData._lastName - The lastName value.
+ * @param {number} userKeyData._score - The score value.
+ * @param {number} userKeyData._todayScore - The todayScore value.
+ */
 const KeyData = ({ keyDataIcon, userKeyData }) => {
     const userKeyDataCalorieCount = userKeyData.calorieCount;
     const userKeyDataProteinCount = userKeyData.proteinCount;

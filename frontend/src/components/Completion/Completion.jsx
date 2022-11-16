@@ -2,7 +2,20 @@ import React from 'react'
 import { RadialBarChart, RadialBar, PolarAngleAxis, Legend, ResponsiveContainer } from 'recharts'
 import PropTypes from 'prop-types'
 
-
+/**
+ * Function Completion - RadialBarChart creation.
+ * @param {object} userScore - The userScore value.  
+ * @param {number} userScore._id - The id value.
+ * @param {number} userScore._age - The age value.
+ * @param {number} userScore._calorieCount - The calorieCount value.
+ * @param {number} userScore._carbohydrateCount - The carbohydrateCount value.
+ * @param {number} userScore._proteinCount - The proteinCount value.
+ * @param {number} userScore._lipidCount - The lipidCount value.
+ * @param {string} userScore._firstName - The firstName value.
+ * @param {string} userScore._lastName - The lastName value.
+ * @param {number} userScore._score - The score value.
+ * @param {number} userScore._todayScore - The todayScore value.
+ */
 function Completion({ userScore }) {
     let userDataScore = userScore.todayScore;
     const { todayScore, score } = userScore;
@@ -19,6 +32,9 @@ function Completion({ userScore }) {
         }
     ]
 
+    /**
+     * Function renderLegend - Legend style.     
+     */
     const renderLegend = () => {
         return (
             <div style={{

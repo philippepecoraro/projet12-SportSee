@@ -2,7 +2,14 @@ import React from 'react'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts'
 import PropTypes from 'prop-types'
 
-
+/**
+ * Function Performance - RadarChart creation.
+ * @param {object} performance - The performance value. 
+ * @param {object[]} performance._data - The data array.
+ * @param {object} performance._kind - The kind values.
+ * @param {number} performance._userId - The userId value.
+ * 
+ */
 function Performance({ performance }) {
     const performanceKind = performance._kind;
     const performanceData = performance._data;
@@ -40,7 +47,7 @@ function Performance({ performance }) {
 
                 <PolarGrid
                     radialLines={false}
-                    polarRadius={[10, 20, 40, 58, 75]}
+                    polarRadius={[12, 30, 50, 70, 86]}
                 />
 
                 <PolarAngleAxis dataKey="_kind"

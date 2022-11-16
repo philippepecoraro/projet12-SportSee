@@ -4,7 +4,9 @@ import { ReactComponent as SportseeLogo } from '../../assets/sportseeLogo.svg'
 import { ReactComponent as SportseeText } from '../../assets/sportseeText.svg'
 import './HorizontalNavbar.css'
 
-
+/**
+ * Function HorizontalNavbar - HorizontalNavBar creation. 
+ */
 const HorizontalNavbar = () => {
     return (
         <div className='horizontalNavbar'>

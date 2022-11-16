@@ -2,10 +2,23 @@ import React from 'react'
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from 'recharts'
 import PropTypes from 'prop-types'
 
-
+/**
+ * Function SessionDuration - LineChart creation.
+ * @param {object} average - The average value. 
+ * @param {number} average._userId - The userId value.
+ * @param {object[]} average._sessions - The sessions array.
+ * @param {number} average._sessions._day - The day value.
+ * @param {number} average._sessions._sessionLength - The session Length value.
+ * 
+ */
 function SessionDuration({ average }) {
     const averageSessions = average._sessions;
 
+    /**
+   * Function CustomTooltip - Tooltip creation.
+     * @param {boolean} active - The active value.
+     * @param {array} payload - The payload value.  
+     */
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
@@ -34,6 +47,9 @@ function SessionDuration({ average }) {
         return null;
     };
 
+    /**
+   * Function renderLegend - Legend style.     
+   */
     const renderLegend = () => {
         return (
             <div style={{
@@ -48,6 +64,10 @@ function SessionDuration({ average }) {
         )
     }
 
+    /**
+     * Function dayOfWeek - 
+     * @param {number} item - The item value.     
+     */
     const dayOfWeek = (item) => {
         let weekTab = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
         return `${weekTab[item - 1]}`;

@@ -6,7 +6,9 @@ import { ReactComponent as Icon2 } from '../../assets/icon2.svg'
 import { ReactComponent as Icon3 } from '../../assets/icon3.svg'
 import { ReactComponent as Icon4 } from '../../assets/icon4.svg'
 
-
+/**
+ * Function VerticalNavbar - VerticalNavBar creation. 
+ */
 const VerticalNavbar = () => {
     return (
         <div className='verticalNavbar'>

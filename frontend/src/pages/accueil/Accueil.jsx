@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Accueil.css'
 
-
+/**
+ * Function Accueil - Navigate to data.  
+ */
 const Accueil = () => {
     const [data1, setData1] = useState('');
     let navigate = useNavigate();
@@ -17,10 +19,16 @@ const Accueil = () => {
         }
     }, [data1, navigate])
 
+    /**
+     * Function donnees1 - Set Data1 to mocked data.
+     */
     function donnees1() {
         setData1(true);
     }
 
+    /**
+     * Function donnees2 - Set Data1 to API data.
+     */
     function donnees2() {
         setData1(false);
     }

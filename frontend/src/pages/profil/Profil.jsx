@@ -4,7 +4,7 @@ import VerticalNavbar from '../../components/VerticalNavbar/VerticalNavbar'
 import { MockedDataService } from '../../service/MockedDataService'
 import { Service } from '../../service/Service'
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import KeyData from '../../components/KeyData/KeyData'
 import Activity from '../../components/Activity/Activity'
 import SessionDuration from '../../components/SessionDuration/SessionDuration'
@@ -16,6 +16,9 @@ import SessionsData from '../../models/SessionsData'
 import PerformanceData from '../../models/PerformanceData'
 
 
+/**
+ * Function Profil - Profil page.  
+ */
 const Profil = () => {
     const [userData, setData] = useState({});
     const [userDataActivity, setDataActivity] = useState({});
@@ -24,65 +27,108 @@ const Profil = () => {
     const { id } = useParams();
     const typeOfData = localStorage.getItem('data1');
     const typeOfDataBool = JSON.parse(typeOfData);
-
+    let navigate = useNavigate();
 
     useEffect(() => {
         if (!typeOfDataBool) {
             Service().getUser(id).then(user => {
-                const userDataData = new UserData(user);
-                setData(userDataData);
+                if (user === undefined) {
+                    navigate('*')
+                }
+                else {
+                    const userDataData = new UserData(user);
+                    setData(userDataData);
+                }
             })
 
             Service().getUserActivity(id).then(activity => {
-                const userDataDataActivity = new ActivityData(activity);
-                setDataActivity(userDataDataActivity);
+                if (activity === undefined) {
+                    navigate('*')
+                }
+                else {
+                    const userDataDataActivity = new ActivityData(activity);
+                    setDataActivity(userDataDataActivity);
+                }
             })
 
             Service().getUserAverageSessions(id).then(session => {
-                const userDataDataSessions = new SessionsData(session);
-                setDataSessions(userDataDataSessions);
+                if (session === undefined) {
+                    navigate('*')
+                }
+                else {
+                    const userDataDataSessions = new SessionsData(session);
+                    setDataSessions(userDataDataSessions);
+                }
             })
 
             Service().getUserPerformance(id).then(performance => {
-                const userDataDataPerformance = new PerformanceData(performance);
-                setDataPerformance(userDataDataPerformance);
+                if (performance === undefined) {
+                    navigate('*')
+                }
+                else {
+                    const userDataDataPerformance = new PerformanceData(performance);
+                    setDataPerformance(userDataDataPerformance);
+                }
             })
         }
         else {
-            (MockedDataService().getUser(id))
-                .forEach(item => {
-                    if (item.id.toString() === id) {
-                        const userDataData = new UserData(item)
-                        setData(userDataData)
-                    }
-                });
+            if ((MockedDataService().getUser(id)) < 1) {
+                navigate('*')
+            }
+            else {
+                (MockedDataService().getUser(id))
+                    .forEach(item => {
+                        if (item.id.toString() === id) {
+                            const userDataData = new UserData(item)
+                            setData(userDataData)
+                        }
+                    })
+            };
 
-            (MockedDataService().getUserActivity(id))
-                .forEach(item => {
-                    if (item.userId.toString() === id) {
-                        const userDataDataActivity = new ActivityData(item)
-                        setDataActivity(userDataDataActivity);
-                    }
-                });
 
-            (MockedDataService().getUserAverageSessions(id))
-                .forEach(item => {
-                    if (item.userId.toString() === id) {
-                        const userDataDataSessions = new SessionsData(item)
-                        setDataSessions(userDataDataSessions);
-                    }
-                });
+            if ((MockedDataService().getUserActivity(id)) < 1) {
+                navigate('*')
+            }
+            else {
+                (MockedDataService().getUserActivity(id))
+                    .forEach(item => {
+                        if (item.userId.toString() === id) {
+                            const userDataDataActivity = new ActivityData(item)
+                            setDataActivity(userDataDataActivity);
+                        }
+                    })
+            };
 
-            (MockedDataService().getUserPerformance(id))
-                .forEach(item => {
-                    if (item.userId.toString() === id) {
-                        const userDataDataPerformance = new PerformanceData(item)
-                        setDataPerformance(userDataDataPerformance);
-                    }
-                });
+
+            if ((MockedDataService().getUserAverageSessions(id)) < 1) {
+                navigate('*')
+            }
+            else {
+                (MockedDataService().getUserAverageSessions(id))
+                    .forEach(item => {
+                        if (item.userId.toString() === id) {
+                            const userDataDataSessions = new SessionsData(item)
+                            setDataSessions(userDataDataSessions);
+                        }
+                    })
+            };
+
+
+            if ((MockedDataService().getUserPerformance(id)) < 1) {
+                navigate('*')
+            }
+            else {
+                (MockedDataService().getUserPerformance(id))
+                    .forEach(item => {
+                        if (item.userId.toString() === id) {
+                            const userDataDataPerformance = new PerformanceData(item)
+                            setDataPerformance(userDataDataPerformance);
+                        }
+                    });
+            }
         }
-    }, [id, typeOfDataBool]);
 
+    }, [id, typeOfDataBool, navigate]);
 
     return (
         <div className='profil'>

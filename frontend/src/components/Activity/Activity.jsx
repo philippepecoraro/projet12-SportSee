@@ -4,6 +4,12 @@ import './Activity.css'
 import PropTypes from 'prop-types'
 
 
+/**
+ * Function Activity - Creation of BarChart.
+ * @param {object} activity - The activity value. 
+ * @param {object[]} activity._sessions - The sessions array.
+ * @param {number} activity._userId - The userId value.
+ */
 function Activity({ activity }) {
     const activitySessions = activity._sessions;
     let sessionTab = [];
@@ -32,6 +38,11 @@ function Activity({ activity }) {
         return dayTab[i];
     }
 
+    /**
+     * Function CustomTooltip - Tooltip creation.
+     * @param {boolean} active - The active value.
+     * @param {object[]} payload - The payload value.     
+     */
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (

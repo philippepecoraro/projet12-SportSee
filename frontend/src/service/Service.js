@@ -1,5 +1,15 @@
 
+
+/**
+ * Function Service - Send custom request using fetch api.
+ */
 export const Service = () => {
+    /**
+     * Function getUser - get user data.
+     * @param {string} id - The id value.  
+     * @return {promise}   
+    */
+
     const getUser = async (id) => {
         try {
             const response = await fetch(`/user/${id}`);
@@ -15,6 +25,11 @@ export const Service = () => {
         }
     }
 
+    /**
+     * Function getUserActivity - get user activity.
+     * @param {string} id - The id value.  
+     * @return {promise}    
+     */
     const getUserActivity = async (id) => {
         try {
             const response = await fetch(`/user/${id}/activity`);
@@ -30,6 +45,11 @@ export const Service = () => {
         }
     }
 
+    /**
+     * Function getAverageSessions - get data of average sessions.
+     * @param {string} id - The id value.    
+     * @return {promise} 
+     */
     const getUserAverageSessions = async (id) => {
         try {
             const response = await fetch(`/user/${id}/average-sessions`);
@@ -45,6 +65,11 @@ export const Service = () => {
         }
     }
 
+    /**
+     * Function getUserPerformance - get user performance. 
+     * @param {string} id - The id value.   
+     * @return {promise}   
+     */
     const getUserPerformance = async (id) => {
         try {
             const response = await fetch(`/user/${id}/performance`);
