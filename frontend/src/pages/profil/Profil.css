@@ -80,15 +80,15 @@
 }
 
 .profilActivitySession {    
-    width: 260px;
-    height: 100%;   
+    width: 260px;   
+    height: 260px;
     background-color: #FF0000; 
     border-radius: 5px;    
 }
 
 .profilActivityPerformance {   
-    width: 260px;   
-    height: 100%;  
+    width: 260px;     
+    height: 260px;
     border-radius: 5px;    
 }
 
@@ -102,18 +102,18 @@
 }
 
 .profilActivityScore {   
-    width: 260px;
-    height: 100%;  
+    width: 260px;   
+    height: 260px;
     border-radius: 5px;
     background-color: #FBFBFB;
 }
 
 @media screen and (max-width: 1320px) {
-    .profilActivitySessionPerformanceScore {
+    .profilActivitySessionPerformanceScore {               
         flex-direction: column;
-        align-items: center;
-        height: auto;
-        
+        align-items: center;   
+        height: auto; 
+
     }
     .profilActivitySession, .profilActivityPerformance,
     .profilActivityScore {
